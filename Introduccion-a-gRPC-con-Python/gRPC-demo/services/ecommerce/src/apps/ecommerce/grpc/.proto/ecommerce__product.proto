@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ecommerce__product;
+
+import "google/protobuf/empty.proto";
+
+service ProductController {
+    rpc List(ProductListRequest) returns (stream Product) {}
+    rpc Create(Product) returns (Product) {}
+    rpc Retrieve(ProductRetrieveRequest) returns (Product) {}
+    rpc Update(Product) returns (Product) {}
+    rpc Destroy(Product) returns (google.protobuf.Empty) {}
+}
+
+message Product {
+    string folio = 1;
+    string name = 2;
+    string price = 3;
+}
+
+message ProductListRequest {
+}
+
+message ProductRetrieveRequest {
+    string folio = 1;
+}
