@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package inventory;
+
+import "google/protobuf/empty.proto";
+
+service InventoryController {
+    rpc List(InventoryListRequest) returns (stream Inventory) {}
+    rpc Create(Inventory) returns (Inventory) {}
+    rpc Retrieve(InventoryRetrieveRequest) returns (Inventory) {}
+    rpc Update(Inventory) returns (Inventory) {}
+    rpc Destroy(Inventory) returns (google.protobuf.Empty) {}
+}
+
+message Inventory {
+    int32 id = 1;
+    int32 quantity = 2;
+    string product = 3;
+}
+
+message InventoryListRequest {
+}
+
+message InventoryRetrieveRequest {
+    int32 id = 1;
+}
